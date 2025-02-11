@@ -35,18 +35,18 @@ import { usePathname } from "next/navigation";
 const routes = [
   {
     path: "/dashboard",
-    label: "Dashboard",
+    label: "Website",
     icon: LayoutDashboard,
-  },
-  {
-    path: "/dashboard/subscriptions",
-    label: "Subscriptions",
-    icon: CreditCard,
   },
   {
     path: "/dashboard/analytics",
     label: "Analytics",
     icon: PieChart,
+  },
+  {
+    path: "/dashboard/subscriptions",
+    label: "Subscriptions",
+    icon: CreditCard,
   },
   {
     path: "/dashboard/team",
