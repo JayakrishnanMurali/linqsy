@@ -1,20 +1,23 @@
-import "@/styles/globals.css";
+import { Inter } from "next/font/google";
+import "../styles/globals.css";
+import type React from "react"; // Import React
 
-import { GeistSans } from "geist/font/sans";
-import { type Metadata } from "next";
+const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Linqsy",
-  description: "One Link to Share Everything",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+export const metadata = {
+  title: "Linqsy - One Link for All",
+  description:
+    "Create a beautiful, customizable bio link page that connects your audience to all your important content, social profiles, and websites in one place.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
