@@ -94,19 +94,18 @@ export default function CreateWebsitePage() {
     const websiteData = JSON.parse(
       localStorage.getItem("newWebsiteData") ?? "{}",
     );
+    const websiteId = crypto.randomUUID(); // TODO: Use a better ID later
+
     localStorage.setItem(
-      "newWebsiteData",
+      `website-${websiteId}`,
       JSON.stringify({
         ...websiteData,
         templateId: selectedTemplate,
       }),
     );
 
-    // TODO: Redirect to builder
-    console.log("Continuing to builder with data:", {
-      ...websiteData,
-      templateId: selectedTemplate,
-    });
+    // Redirect to editor
+    window.location.href = `/editor/${websiteId}`;
   }
 
   return (
@@ -167,9 +166,12 @@ export default function CreateWebsitePage() {
                 )}
               />
 
-              <Button type="submit" className="w-full">
-                Continue
-              </Button>
+              <div className="flex justify-end space-x-4">
+                <Button variant="outline" onClick={() => setStep(0)}>
+                  Cancel
+                </Button>
+                <Button type="submit">Continue</Button>
+              </div>
             </form>
           </Form>
         </>
