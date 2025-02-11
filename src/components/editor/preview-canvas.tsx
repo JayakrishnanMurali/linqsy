@@ -144,11 +144,8 @@ export function PreviewCanvas({
             breakpoints={breakpoints}
             cols={cols}
             rowHeight={100}
-            // Margin / Padding
             margin={[16, 16]}
             containerPadding={[16, 16]}
-            // If you don't want items to push outside horizontally,
-            // use one of the compactType settings or null:
             compactType="vertical"
             preventCollision={false}
             onLayoutChange={handleLayoutChange}
@@ -157,7 +154,7 @@ export function PreviewCanvas({
               <div
                 key={block.id}
                 className={cn(
-                  "flex cursor-move items-center justify-center rounded font-bold text-white",
+                  "flex cursor-grab items-center justify-center rounded font-bold text-white",
                   block.color,
                 )}
                 onClick={() => onSelectElement(block.id)}

@@ -32,6 +32,17 @@ interface BaseComponent {
 interface ComponentGroup {
   category: string;
   id: string;
+  type:
+    | "heading"
+    | "text"
+    | "button"
+    | "list"
+    | "image"
+    | "gallery"
+    | "video"
+    | "carousel"
+    | "map"
+    | "links";
   items: BaseComponent[];
 }
 
@@ -39,6 +50,7 @@ const BASIC_COMPONENTS: ComponentGroup[] = [
   {
     category: "Common Elements",
     id: "common-elements",
+    type: "heading",
     items: [
       { id: "heading", name: "Heading", icon: RiHeading },
       { id: "text", name: "Text Block", icon: RiText },
@@ -49,6 +61,7 @@ const BASIC_COMPONENTS: ComponentGroup[] = [
   {
     category: "Media",
     id: "media",
+    type: "image",
     items: [
       { id: "image", name: "Single Image", icon: RiImageLine },
       { id: "gallery", name: "Gallery", icon: RiGalleryLine },
@@ -59,6 +72,7 @@ const BASIC_COMPONENTS: ComponentGroup[] = [
   {
     category: "Interactive",
     id: "interactive",
+    type: "links",
     items: [
       { id: "links", name: "Links", icon: RiLinkM },
       { id: "map", name: "Map", icon: RiMapPinLine },
@@ -66,13 +80,33 @@ const BASIC_COMPONENTS: ComponentGroup[] = [
   },
 ];
 
-const SOCIAL_COMPONENTS: BaseComponent[] = [
-  { id: "instagram", name: "Instagram", icon: RiInstagramLine },
-  { id: "youtube", name: "YouTube", icon: RiYoutubeLine },
-  { id: "spotify", name: "Spotify", icon: RiSpotifyLine },
-  { id: "twitter", name: "Twitter", icon: RiTwitterXLine },
-  { id: "tiktok", name: "TikTok", icon: RiTiktokLine },
-  { id: "linkedin", name: "LinkedIn", icon: RiLinkedinBoxLine },
+const SOCIAL_COMPONENTS: Array<
+  BaseComponent & {
+    type:
+      | "Instagram"
+      | "YouTube"
+      | "Spotify"
+      | "Twitter"
+      | "TikTok"
+      | "LinkedIn";
+  }
+> = [
+  {
+    id: "instagram",
+    name: "Instagram",
+    icon: RiInstagramLine,
+    type: "Instagram",
+  },
+  { id: "youtube", name: "YouTube", icon: RiYoutubeLine, type: "YouTube" },
+  { id: "spotify", name: "Spotify", icon: RiSpotifyLine, type: "Spotify" },
+  { id: "twitter", name: "Twitter", icon: RiTwitterXLine, type: "Twitter" },
+  { id: "tiktok", name: "TikTok", icon: RiTiktokLine, type: "TikTok" },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    icon: RiLinkedinBoxLine,
+    type: "LinkedIn",
+  },
 ];
 
 function ComponentGrid({ items }: { items: BaseComponent[] }) {
